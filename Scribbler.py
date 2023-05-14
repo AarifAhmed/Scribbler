@@ -7,6 +7,13 @@ import win32api
 from time import *
 
 
+def wordwrap():
+    global wrap
+    if wrap.get():
+        text.config(wrap='word')
+    if not wrap.get():
+        text.config(wrap='none')
+
 def underline_it(*args):
     our_font.config(underline=bool(1))
 
@@ -657,7 +664,7 @@ window.bind('<Control-n>', new_file)
 
 our_font = font.Font(family="calibri", size=int("25"))
 
-text = Text(window, font=our_font, undo=True)
+text = Text(window, font=our_font, undo=True, wrap='word')
 window.grid_rowconfigure(0, weight=1)
 window.grid_columnconfigure(0, weight=1)
 text.grid(sticky=N + E + S + W)
@@ -665,7 +672,7 @@ scroll_bar = Scrollbar(text)
 scroll_bar.pack(side=RIGHT, fill=Y)
 text.config(yscrollcommand=scroll_bar.set)
 
-status_bar = Label(window, text="", bd=1, relief=SUNKEN, anchor=W)
+status_bar = Label(window, text="Ready", bd=1, relief=SUNKEN, anchor=W)
 
 # Add the Label widget to the bottom of the window
 status_bar.grid(row=1, column=0, columnspan=3, sticky=W + E)
@@ -699,6 +706,9 @@ format_menu = Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Format", menu=format_menu)
 format_menu.add_command(label="Font", command=font_type, accelerator='Ctrl + F')
 format_menu.add_command(label="Font Color", command=color_chooser, accelerator='Ctrl + G')
+wrap = BooleanVar(value=bool(1))
+format_menu.add_checkbutton(label='Word Wrap', command=wordwrap, onvalue=True, offvalue=False,
+                            variable=wrap)
 
 about_menu = Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Help", menu=about_menu)
