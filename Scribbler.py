@@ -444,14 +444,14 @@ def shortcuts(*args):
     shortcut_21_4 = Label(shortcuts_window, text="N ", borderwidth=2, bg='Grey', font=('Calibri', 15))
     shortcut_21_4.place(x=460, y=330)
 
-    shortcut_21_1 = Label(shortcuts_window, text='Zoom  :', font=('Calibri', 15))
+    '''shortcut_21_1 = Label(shortcuts_window, text='Zoom  :', font=('Calibri', 15))
     shortcut_21_1.place(x=250, y=370)
     shortcut_21_2 = Label(shortcuts_window, text="Ctrl", borderwidth=2, bg='Grey', font=('Calibri', 15))
     shortcut_21_2.place(x=380, y=370)
     shortcut_21_3 = Label(shortcuts_window, text="+", font=('Calibri', 15))
     shortcut_21_3.place(x=430, y=370)
     shortcut_21_4 = Label(shortcuts_window, text="MouseWheel ", borderwidth=2, bg='Grey', font=('Calibri', 15))
-    shortcut_21_4.place(x=460, y=370)
+    shortcut_21_4.place(x=460, y=370)'''
 
     shortcuts_window.mainloop()
 
